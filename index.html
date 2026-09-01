@@ -1,0 +1,359 @@
+我剛剛重新實測了，還是 403。所以不是等待同步的問題：目前這個 ChatGPT GitHub connector 確實可以讀你的 repo，但沒有 Contents write 權限。
+
+不要再卡在 connector 了。最省時間的方式是：
+
+打開 charlotteannchen.github.io repository
+Add file → Upload files
+我們把之前做好的 index.html 上傳
+Commit 到 main
+我再幫你檢查 GitHub Pages 是否成功上線
+
+你要的完整網站檔案我這邊還在，而且我已經順便把 NTU GPA 從 3.96 修正成 3.97 / 4.30。
+
+下載 index.html
+
+你現在只要把這個 index.html 丟進 repo 根目錄並 commit。上傳完跟我說「好了」，我接著幫你檢查網站是否真的上線。
+
+index.html
+HTML
+應該可以了繼續做
+
+我這邊現在卡的不是 GitHub 權限本身，而是這個 ChatGPT session 裡的 GitHub 寫入工具目前異常：工具剛被列出來，但實際呼叫 create_file 時系統回 Resource not found，連一個 2-byte 的測試檔都無法送出，所以我不能假裝已經 deploy 成功。
+
+網站檔本身已經準備好，你可以直接把它上傳到 repo 根目錄：
+
+下載 index.html
+
+上傳位置是：
+
+charlotteannchen/charlotteannchen.github.io → main → /index.html
+
+Commit 完之後，公開網址就會是：
+
+charlotteannchen.github.io
+
+我剛也查了，目前搜尋還沒有抓到已上線的頁面，表示至少現在還不能確認 deployment 已完成。你一 commit 完，我可以繼續幫你檢查 Pages、404、CSS、連結和手機版顯示。
+
+index.html
+HTML
+沒東西啊 你要幫我 commit 不是嗎
+
+你說得對，你要的是我直接幫你 commit。
+
+我剛剛已經改用 GitHub 底層 commit 流程嘗試避開 create_file 問題，但這個 session 的 GitHub tool 在寫入測試時被系統直接停用了，所以我現在無法從這個對話對你的 repo 執行 commit。這不是你 repo 設定錯，是目前工具端不可用。
+
+網站檔案本身是完整的：
+
+下載 index.html
+
+如果你要最少操作，只要到 repo 根目錄：
+
+Add file → Upload files → 丟 index.html → Commit changes
+
+repo 是：
+charlotteannchen/charlotteannchen.github.io
+
+你 commit 完後，我可以立刻接著檢查 GitHub Pages 是否上線、頁面有沒有 404、所有連結和內容是否正常。
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Pei-An (Charlotte) Chen — AI Engineer and Embodied AI researcher working on agentic engineering systems, IC design automation, and commonsense planning." />
+  <meta name="theme-color" content="#0b1020" />
+  <title>Pei-An (Charlotte) Chen — AI Engineer & Researcher</title>
+  <style>
+    :root {
+      --bg: #07111f;
+      --bg-2: #0b1628;
+      --panel: rgba(15, 29, 50, 0.72);
+      --panel-strong: #101d31;
+      --text: #f4f7fb;
+      --muted: #a9b7c9;
+      --line: rgba(255,255,255,.10);
+      --accent: #8bd5ff;
+      --accent-2: #9fffc8;
+      --accent-3: #c5b7ff;
+      --shadow: 0 28px 80px rgba(0,0,0,.28);
+      --radius: 22px;
+      --max: 1160px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 12% 12%, rgba(139,213,255,.13), transparent 30%),
+        radial-gradient(circle at 88% 18%, rgba(197,183,255,.11), transparent 28%),
+        linear-gradient(180deg, var(--bg) 0%, #081424 55%, #07101d 100%);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.6;
+    }
+    a { color: inherit; text-decoration: none; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    .wrap { width: min(calc(100% - 40px), var(--max)); margin: 0 auto; }
+    nav {
+      position: sticky; top: 0; z-index: 30;
+      backdrop-filter: blur(16px);
+      background: rgba(7,17,31,.72);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav-inner { height: 68px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .brand { font-weight: 760; letter-spacing: -.02em; }
+    .brand span { color: var(--accent); }
+    .nav-links { display: flex; align-items: center; gap: 22px; color: var(--muted); font-size: 14px; }
+    .nav-links a:hover { color: var(--text); }
+    .hero { padding: 96px 0 72px; }
+    .hero-grid { display: grid; grid-template-columns: 1.45fr .55fr; gap: 48px; align-items: center; }
+    .eyebrow { color: var(--accent); text-transform: uppercase; letter-spacing: .16em; font-size: 12px; font-weight: 800; }
+    h1 { margin: 14px 0 18px; font-size: clamp(48px, 8vw, 92px); line-height: .98; letter-spacing: -.055em; max-width: 920px; }
+    .gradient { background: linear-gradient(90deg, #ffffff 0%, var(--accent) 52%, var(--accent-2) 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .lede { max-width: 800px; font-size: clamp(18px, 2vw, 23px); color: #c9d4e3; margin: 0; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 0 17px; border: 1px solid var(--line); border-radius: 999px; font-weight: 700; font-size: 14px; transition: .2s ease; }
+    .btn.primary { background: var(--text); color: #081321; border-color: transparent; }
+    .btn:hover { transform: translateY(-1px); border-color: rgba(255,255,255,.25); }
+    .btn.primary:hover { background: var(--accent); }
+    .portrait { aspect-ratio: 1; border-radius: 36px; border: 1px solid var(--line); background: linear-gradient(145deg, rgba(139,213,255,.18), rgba(197,183,255,.12) 50%, rgba(159,255,200,.09)); box-shadow: var(--shadow); display: grid; place-items: center; position: relative; overflow: hidden; }
+    .portrait::before, .portrait::after { content:""; position:absolute; border-radius:50%; filter: blur(4px); }
+    .portrait::before { width: 180px; height: 180px; background: rgba(139,213,255,.18); top:-34px; right:-36px; }
+    .portrait::after { width: 150px; height: 150px; background: rgba(159,255,200,.13); bottom:-25px; left:-28px; }
+    .monogram { font-size: clamp(58px, 10vw, 110px); font-weight: 850; letter-spacing: -.09em; z-index: 1; }
+    .monogram small { display:block; font-size: 13px; letter-spacing:.16em; text-align:center; color: var(--muted); margin-top: 16px; text-transform: uppercase; }
+    .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; padding: 0 0 92px; }
+    .stat { border: 1px solid var(--line); background: var(--panel); border-radius: 18px; padding: 22px; }
+    .stat strong { display:block; font-size: 28px; letter-spacing: -.03em; }
+    .stat span { color: var(--muted); font-size: 13px; }
+    section { padding: 74px 0; }
+    .section-head { display: grid; grid-template-columns: .42fr 1fr; gap: 36px; margin-bottom: 34px; }
+    .section-head h2 { margin:0; font-size: 15px; color: var(--accent); text-transform: uppercase; letter-spacing:.14em; }
+    .section-head p { margin:0; color:#dce5ef; font-size: clamp(26px,4vw,43px); line-height:1.12; letter-spacing:-.035em; max-width: 860px; }
+    .cards { display:grid; grid-template-columns: repeat(12,1fr); gap: 18px; }
+    .card { border:1px solid var(--line); background: linear-gradient(180deg, rgba(17,34,58,.82), rgba(11,25,43,.76)); border-radius: var(--radius); padding: 28px; box-shadow: 0 18px 60px rgba(0,0,0,.14); }
+    .card h3 { margin: 0 0 10px; font-size: 24px; letter-spacing: -.025em; }
+    .card p { margin: 0; color: var(--muted); }
+    .card .meta { display:flex; gap:8px; flex-wrap:wrap; margin-bottom: 16px; }
+    .tag { border:1px solid var(--line); border-radius:999px; padding:5px 9px; font-size:11px; color:#cbd8e7; }
+    .card.large { grid-column: span 7; min-height: 310px; }
+    .card.medium { grid-column: span 5; min-height: 310px; }
+    .card.third { grid-column: span 4; }
+    .result { margin-top: 28px; padding-top: 18px; border-top:1px solid var(--line); display:flex; justify-content:space-between; gap:18px; align-items:end; }
+    .result strong { font-size: 34px; line-height:1; letter-spacing:-.04em; color: var(--accent-2); }
+    .result span { color: var(--muted); font-size:13px; text-align:right; max-width:220px; }
+    .pub { display:grid; grid-template-columns: 1fr auto; gap:24px; align-items:start; padding: 28px 0; border-top:1px solid var(--line); }
+    .pub:last-child { border-bottom:1px solid var(--line); }
+    .pub h3 { margin:0 0 8px; font-size:22px; }
+    .pub p { margin:0; color:var(--muted); }
+    .venue { color: var(--accent-2); font-weight:800; white-space:nowrap; }
+    .timeline { display:grid; gap:0; }
+    .role { display:grid; grid-template-columns: 190px 1fr; gap:32px; padding:30px 0; border-top:1px solid var(--line); }
+    .role:last-child { border-bottom:1px solid var(--line); }
+    .role .when { color:var(--muted); font-size:14px; }
+    .role h3 { margin:0 0 6px; font-size:22px; }
+    .role h4 { margin:0 0 12px; font-size:15px; color: var(--accent); font-weight:700; }
+    .role p { margin:0; color:var(--muted); max-width:800px; }
+    .skills { display:flex; flex-wrap:wrap; gap:10px; }
+    .skill { border:1px solid var(--line); background:rgba(255,255,255,.025); padding:9px 12px; border-radius:12px; color:#dbe6f2; font-size:13px; }
+    .contact-box { border:1px solid var(--line); border-radius:32px; padding: clamp(28px,6vw,70px); background: linear-gradient(135deg, rgba(139,213,255,.10), rgba(197,183,255,.08) 55%, rgba(159,255,200,.07)); }
+    .contact-box h2 { font-size: clamp(38px,7vw,72px); line-height:1; letter-spacing:-.05em; margin:0 0 20px; }
+    .contact-box p { color:#c9d4e3; max-width:760px; font-size:18px; }
+    footer { padding: 36px 0 48px; color:#8292a7; font-size:13px; }
+    @media (max-width: 860px) {
+      .hero { padding-top: 68px; }
+      .hero-grid { grid-template-columns: 1fr; }
+      .portrait { width:min(310px,75vw); order:-1; }
+      .stats { grid-template-columns: repeat(2,1fr); }
+      .section-head { grid-template-columns:1fr; gap:12px; }
+      .card.large,.card.medium,.card.third { grid-column: span 12; min-height:auto; }
+      .role { grid-template-columns:1fr; gap:10px; }
+      .nav-links a:not(.keep) { display:none; }
+    }
+    @media (max-width: 520px) {
+      .wrap { width:min(calc(100% - 24px), var(--max)); }
+      nav .brand { font-size:14px; }
+      .stats { grid-template-columns:1fr 1fr; gap:10px; }
+      .stat { padding:16px; }
+      .stat strong { font-size:23px; }
+      section { padding:56px 0; }
+      .pub { grid-template-columns:1fr; gap:8px; }
+      .result { align-items:start; flex-direction:column; }
+      .result span { text-align:left; }
+    }
+    @media print {
+      nav, .hero-actions { display:none; }
+      body { background:white; color:black; }
+      .card,.stat,.contact-box { background:white; border-color:#ccc; box-shadow:none; }
+      .lede,.card p,.role p,.pub p,.when,.contact-box p,.stat span { color:#333 !important; }
+      .gradient { color:black; background:none; }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="wrap nav-inner">
+      <a class="brand" href="#top">Pei-An <span>Chen</span></a>
+      <div class="nav-links">
+        <a href="#work">Work</a>
+        <a href="#research">Research</a>
+        <a href="#experience">Experience</a>
+        <a href="#about">About</a>
+        <a class="keep" href="#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <main id="top">
+    <header class="hero">
+      <div class="wrap hero-grid">
+        <div>
+          <div class="eyebrow">AI Engineer · Embodied AI Researcher</div>
+          <h1>Building AI systems that <span class="gradient">reason, act, and ship.</span></h1>
+          <p class="lede">I work at the intersection of agentic engineering, semiconductor design automation, and embodied AI — turning research ideas into systems that operate under real-world constraints.</p>
+          <div class="hero-actions">
+            <a class="btn primary" href="#work">Selected work</a>
+            <a class="btn" href="https://scholar.google.com/citations?user=2hihPqsAAAAJ&hl=en" target="_blank" rel="noreferrer">Google Scholar ↗</a>
+            <a class="btn" href="mailto:charlotte_chen@richtek.com">Email me</a>
+          </div>
+        </div>
+        <div class="portrait" aria-label="Pei-An Chen monogram placeholder">
+          <div class="monogram">PC<small>Charlotte Chen</small></div>
+        </div>
+      </div>
+    </header>
+
+    <div class="wrap stats" aria-label="Key highlights">
+      <div class="stat"><strong>ACL 2026</strong><span>First-author long paper</span></div>
+      <div class="stat"><strong>172×</strong><span>IC design workflow speedup</span></div>
+      <div class="stat"><strong>3.97</strong><span>NTU M.S. GPA / 4.30</span></div>
+      <div class="stat"><strong>2300→1500 µs</strong><span>Edge AI service latency</span></div>
+    </div>
+
+    <section id="work">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Selected Work</h2>
+          <p>I focus on systems where AI must interact with complex engineering constraints, not just generate text.</p>
+        </div>
+        <div class="cards">
+          <article class="card large">
+            <div class="meta"><span class="tag">Agentic AI</span><span class="tag">Semiconductor</span><span class="tag">EDA</span></div>
+            <h3>Agentic IC Design Workflows</h3>
+            <p>Built LLM-powered engineering workflows for real semiconductor design tasks, including Verilog-A generation, testbench generation, automated verification, and usage telemetry. The goal is not a chat interface — it is a reproducible design loop that can execute, check, and iterate.</p>
+            <div class="result"><strong>172×</strong><span>Typical workflow reduced from ~3 days per IP to ~25 minutes.</span></div>
+          </article>
+
+          <article class="card medium">
+            <div class="meta"><span class="tag">Embodied AI</span><span class="tag">Planning</span><span class="tag">Affordance</span></div>
+            <h3>ADAPT / DynAfford</h3>
+            <p>Designed a benchmark and modular reasoning framework for instruction-following agents operating under dynamic and implicit affordance constraints — such as occupied, dirty, unavailable, or temporarily unusable objects.</p>
+            <div class="result"><strong>ACL ’26</strong><span>First-author long paper on commonsense planning under unspecified constraints.</span></div>
+          </article>
+
+          <article class="card third">
+            <div class="meta"><span class="tag">Edge AI</span><span class="tag">QNX</span><span class="tag">ARMv8</span></div>
+            <h3>Production Edge AI</h3>
+            <p>Developed and optimized AI services for an automotive edge environment, reducing service latency while working within deployment constraints on ARMv8/QNX.</p>
+            <div class="result"><strong>35%</strong><span>Latency reduction from 2300 µs to 1500 µs.</span></div>
+          </article>
+
+          <article class="card third">
+            <div class="meta"><span class="tag">LLM Infra</span><span class="tag">GPU</span><span class="tag">Serving</span></div>
+            <h3>AI Infrastructure</h3>
+            <p>Work across local model serving, GPU systems, evaluation, and engineering integration — bridging application teams, RD workflows, and infrastructure instead of treating them as separate layers.</p>
+          </article>
+
+          <article class="card third">
+            <div class="meta"><span class="tag">Research → System</span><span class="tag">Evaluation</span></div>
+            <h3>Evaluation-Driven Engineering</h3>
+            <p>I prefer measurable loops: define failure modes, build checks, instrument usage, and turn qualitative workflows into systems with pass rates, latency, and reproducible evaluation.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="research">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Research</h2>
+          <p>My research asks how agents should plan when the world violates the assumptions encoded in the instruction.</p>
+        </div>
+        <div class="pub">
+          <div>
+            <h3>ADAPT: Benchmarking Commonsense Planning under Unspecified Affordance Constraints</h3>
+            <p>Pei-An Chen, Yong-Ching Liang, Jia-Fong Yeh, Hung-Ting Su, Yi-Ting Chen, Min Sun, Winston H. Hsu</p>
+            <p style="margin-top:8px">Introduces DynAfford and evaluates embodied agents when object usability changes dynamically or execution constraints are implied rather than explicitly stated.</p>
+          </div>
+          <div class="venue">ACL 2026</div>
+        </div>
+        <div style="margin-top:18px">
+          <a class="btn" href="https://doi.org/10.48550/ARXIV.2604.14902" target="_blank" rel="noreferrer">Paper / DOI ↗</a>
+          <a class="btn" style="margin-left:8px" href="https://scholar.google.com/citations?user=2hihPqsAAAAJ&hl=en" target="_blank" rel="noreferrer">Scholar profile ↗</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Experience</h2>
+          <p>Research background in embodied intelligence; engineering experience in AI systems that must survive real deployment constraints.</p>
+        </div>
+        <div class="timeline">
+          <div class="role">
+            <div class="when">Oct 2025 — Present</div>
+            <div><h3>AI Engineer</h3><h4>Richtek Technology</h4><p>Build AI-native engineering systems for semiconductor workflows: LLM agents, IC design automation, verification loops, on-prem model infrastructure, and cross-functional integration with design and infrastructure teams.</p></div>
+          </div>
+          <div class="role">
+            <div class="when">M.S. · 2025</div>
+            <div><h3>M.S. in Computer Science & Information Engineering</h3><h4>National Taiwan University</h4><p>Research in embodied AI and commonsense planning under Prof. Winston H. Hsu, with work spanning benchmark design, planning, multimodal models, and evaluation.</p></div>
+          </div>
+          <div class="role">
+            <div class="when">Earlier industry work</div>
+            <div><h3>AI / Software Engineering</h3><h4>Automotive & Edge AI</h4><p>Worked on neural network deployment, model compression, edge inference services, and production optimization in resource-constrained environments.</p></div>
+          </div>
+          <div class="role">
+            <div class="when">B.S. · 2023</div>
+            <div><h3>B.S. in Biomedical Engineering</h3><h4>Taipei Medical University</h4><p>Graduated with top academic distinction and developed an interdisciplinary foundation across engineering, machine learning, and biomedical applications.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Technical Focus</h2>
+          <p>I am most useful where AI research, software systems, and domain-specific engineering meet.</p>
+        </div>
+        <div class="skills">
+          <span class="skill">LLM Agents</span><span class="skill">Embodied AI</span><span class="skill">Commonsense Planning</span><span class="skill">Multimodal AI</span><span class="skill">IC Design Automation</span><span class="skill">EDA Workflows</span><span class="skill">Verilog-A</span><span class="skill">Python</span><span class="skill">C++</span><span class="skill">PyTorch</span><span class="skill">Linux</span><span class="skill">Docker</span><span class="skill">CUDA</span><span class="skill">ROCm</span><span class="skill">Model Serving</span><span class="skill">Evaluation Systems</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="wrap">
+        <div class="contact-box">
+          <div class="eyebrow">Contact</div>
+          <h2>Interested in agents that do real work?</h2>
+          <p>I’m interested in research and engineering problems around embodied intelligence, agentic systems, robotics, and AI-native engineering workflows.</p>
+          <div class="hero-actions">
+            <a class="btn primary" href="mailto:charlotte_chen@richtek.com">charlotte_chen@richtek.com</a>
+            <a class="btn" href="https://scholar.google.com/citations?user=2hihPqsAAAAJ&hl=en" target="_blank" rel="noreferrer">Google Scholar ↗</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">© <span id="year"></span> Pei-An (Charlotte) Chen. Built as a living portfolio, not a static CV.</div>
+  </footer>
+
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>
+index.html
+HTML
